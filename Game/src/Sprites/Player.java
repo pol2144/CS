@@ -1,15 +1,14 @@
 package Sprites;
 
 public class Player {
+    private Type type;
     private int row;
     private int column;
 
-    private Sprite sprite;
-
-    public Player(int row, int column, Sprite sprite) {
+    public Player(int row, int column, Sprite sprite, Type type) {
         this.row = row;
         this.column = column;
-        this.sprite = sprite;
+        this.type = type;
     }
 
     public void move(int newRow, int newColumn) {
