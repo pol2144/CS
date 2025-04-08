@@ -59,7 +59,7 @@ public class Map {
                 }
             }
 
-            if(r-1 > 0 && c+1 < tiles.length) {
+            if(r-1 > 0 && c+1 < tiles[0].length) {
                 if (Math.random() > 0.5) {
                     tiles[r-1][c+1] = Tile.water;
                     SpillWater(r - 1, c + 1,depth-1);
@@ -69,7 +69,7 @@ public class Map {
                 }
             }
 
-            if(r > 0 && c-1 > 0) {
+            if(c-1 > 0) {
                 if (Math.random() > 0.5) {
                     tiles[r][c-1] = Tile.water;
                     SpillWater(r, c - 1,depth-1);
@@ -79,7 +79,7 @@ public class Map {
                 }
             }
 
-            if(r-1 > 0 && c > 0) {
+            if(r-1 > 0) {
                 if (Math.random() > 0.5) {
                     tiles[r-1][c] = Tile.water;
                     SpillWater(r - 1, c,depth-1);
@@ -89,7 +89,7 @@ public class Map {
                 }
             }
 
-            if(r + 1 > 0 && c > 0) {
+            if(r + 1 > tiles.length) {
                 if (Math.random() > 0.5) {
                     tiles[r+1][c] = Tile.water;
                     SpillWater(r + 1, c,depth-1);
@@ -99,7 +99,7 @@ public class Map {
                 }
             }
 
-            if(r > 0 && c+1 > 0) {
+            if(c+1 < tiles[0].length) {
                 if (Math.random() > 0.5) {
                     tiles[r][c+1] = Tile.water;
                     SpillWater(r, c + 1,depth-1);
