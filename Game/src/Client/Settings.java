@@ -10,5 +10,7 @@ public class Settings {
     public final static int MAP_WIDTH = 100;
 
     public final static Image MIDDLE_GRASS = new Image("file:Tiny Swords/Ground/104.png");
+    public static final Image MIDDLE_SAND = new Image("file:Tiny Swords/Ground/204.png");
+    public static final Image WATER = new Image("file:Tiny Swords/Ground/000.png");
 }
 

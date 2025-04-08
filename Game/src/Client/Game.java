@@ -93,9 +93,22 @@ public class Game  extends Application {
         GridPane gridPane = new GridPane();
         for (int r = 0; r < Settings.MAP_HEIGHT; r++) {
             for (int c = 0; c < Settings.MAP_WIDTH; c++) {
+                ImageView img = null;
                 switch(map[r][c]) {
                     case grass:
-                        ImageView img = new ImageView(Settings.MIDDLE_GRASS);
+                         img = new ImageView(Settings.MIDDLE_GRASS);
+                        img.setFitWidth(Settings.TILE_SIZE_WIDTH);
+                        img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
+                        gridPane.add(img,r,c);
+                        break;
+                    case sand:
+                         img = new ImageView(Settings.MIDDLE_SAND);
+                        img.setFitWidth(Settings.TILE_SIZE_WIDTH);
+                        img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
+                        gridPane.add(img,r,c);
+                        break;
+                    case water:
+                         img = new ImageView(Settings.WATER);
                         img.setFitWidth(Settings.TILE_SIZE_WIDTH);
                         img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                         gridPane.add(img,r,c);
@@ -111,7 +124,7 @@ public class Game  extends Application {
         stage.setTitle("Super Amazing Strategy Game");
         stage.setResizable(false);
         stage.show();
-        new Thread(new ClientHandler());
+        new Thread(new ClientHandler()).start();
 
     }
 
