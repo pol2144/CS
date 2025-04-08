@@ -78,31 +78,7 @@ public class GameServer {
         map = Map.generateMap();
         sendEveryone(Map.convertToString(map));
         while(true){
-            for (int i = 0; i < playerCount; i++) {
-                try {
-                    String request = playerInputs[i].readLine().split();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                //spriteID, goal
-                break;
-                msg = "";
-                try {
-                    msg = playerInputs[i].readLine();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
 
-                switch (request) {
-                    case "move":
-                        msg = in.readLine().split(";");
-                        //spriteID, goal
-                        //logic check
-                        //sendEveryone("move");
-                        //sendEveryone("SpriteID, goal);
-                        break;
-                }
-            }
         }
     }
 
