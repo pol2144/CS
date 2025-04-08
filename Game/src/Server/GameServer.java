@@ -77,9 +77,9 @@ public class GameServer {
         sendEveryone("start");
         map = Map.generateMap();
         sendEveryone(Map.convertToString(map));
-        while(true){
-
-        }
+//        while(true){
+//
+//        }
     }
 
     private static void setup() {

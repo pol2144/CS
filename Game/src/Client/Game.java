@@ -111,22 +111,22 @@ public class Game  extends Application {
         stage.setTitle("Super Amazing Strategy Game");
         stage.setResizable(false);
         stage.show();
-        while(true){
-            String msg = in.readLine();
-            String[] dir;
-            switch(msg){
-                case "move":
-                    dir = in.readLine().split(";");
-                    //spriteID, goal
-                    break;
-                case "attack":
-                    dir = in.readLine().split(";");
-                    //spriteID attacker, spriteID attacked, demage
-                    break;
-                case "build":
-                    dir = in.readLine().split(";");
-                    //spriteID, x, y , buildingType
-            }
-        }
+//        while(true){
+//            String msg = in.readLine();
+//            String[] dir;
+//            switch(msg){
+//                case "move":
+//                    dir = in.readLine().split(";");
+//                    //spriteID, goal
+//                    break;
+//                case "attack":
+//                    dir = in.readLine().split(";");
+//                    //spriteID attacker, spriteID attacked, demage
+//                    break;
+//                case "build":
+//                    dir = in.readLine().split(";");
+//                    //spriteID, x, y , buildingType
+//            }
+//        }
     }
 }
