@@ -111,22 +111,34 @@ public class Game  extends Application {
         stage.setTitle("Super Amazing Strategy Game");
         stage.setResizable(false);
         stage.show();
-//        while(true){
-//            String msg = in.readLine();
-//            String[] dir;
-//            switch(msg){
-//                case "move":
-//                    dir = in.readLine().split(";");
-//                    //spriteID, goal
-//                    break;
-//                case "attack":
-//                    dir = in.readLine().split(";");
-//                    //spriteID attacker, spriteID attacked, demage
-//                    break;
-//                case "build":
-//                    dir = in.readLine().split(";");
-//                    //spriteID, x, y , buildingType
-//            }
-//        }
+        new Thread(new ClientHandler());
+
+    }
+
+    private class ClientHandler implements Runnable {
+        public void run() {
+            while(true){
+                String[] msg = null;
+                try {
+                    msg = in.readLine().split(";");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                String[] dir;
+            switch(msg[0]){
+                case "move":
+
+                    //spriteID, goal
+                    break;
+                case "attack":
+
+                    //spriteID attacker, spriteID attacked, demage
+                    break;
+                case "build":
+
+                    //spriteID, x, y , buildingType
+            }
+        }
+        }
     }
 }

@@ -18,6 +18,7 @@ public class GameServer {
     public static int playerCount = 0;
     public static Scanner scanner;
     public static Tile[][] map;
+    public static Thread[] playerHandlers;
     public static void main(String[] args) {
         setup();
         connectPlayer();
@@ -57,6 +58,7 @@ public class GameServer {
                 }
             }
             if(msg.equals("exit")) break;
+            if(state == ServerState.Playing)break;
 
 
 
@@ -77,9 +79,18 @@ public class GameServer {
         sendEveryone("start");
         map = Map.generateMap();
         sendEveryone(Map.convertToString(map));
-//        while(true){
-//
-//        }
+        playerHandlers = new Thread[playerCount];
+       while (true){
+           for (int i = 0; i < playerCount; i++) {
+               try {
+                   if(playerInputs[i].ready()){
+                       String[] msg = playerInputs[i].readLine().split(";");
+                   }
+               } catch (IOException e) {
+                   throw new RuntimeException(e);
+               }
+           }
+       }
     }
 
     private static void setup() {
@@ -132,4 +143,12 @@ public class GameServer {
             System.out.println("full capacity reached");
         }
     }
+    public class serverHandler implements Runnable{
+        public void run() {
+            while(true){
+
+            }
+        }
+    }
+
 }
