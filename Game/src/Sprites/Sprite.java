@@ -1,25 +1,36 @@
 package Sprites;
 
 
+import Client.Settings;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Sprite {
     private int number = 0;
     private int row;
     private int column;
+    private int hp;
+    private int width;
+    private int height;
 
-    ImageView knightBlue = new ImageView("file:Tiny Swords/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png");
-    ImageView knightPurple = new ImageView("file:Tiny Swords/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png");
-    ImageView knightRed = new ImageView("file:Tiny Swords/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png");
-    ImageView knightYellow = new ImageView("file:Tiny Swords/Factions/Knights/Troops/Warrior/Yellow/Warrior_Yellow.png");
-    
-    public Sprite(int number, int row, int column, ImageView imageView) {
+//    ImageView knightBlue = new ImageView(Settings.KNIGHT_BLUE);
+//    ImageView knightPurple = new ImageView(Settings.KNIGHT_PURPLE);
+//    ImageView knightRed = new ImageView(Settings.KNIGHT_RED);
+//    ImageView knightYellow = new ImageView(Settings.KNIGHT_YELLOW);
+
+    private Type type;
+
+
+    public Sprite(int hp, int row, int column, int width, int heigth) {
         this.column = column;
         this.row = row;
-        this.number = number;
+        this.hp = hp;
+        this.width = width;
+        this.height = heigth;
     }
 
 
+    public Type getType() {return type;}
 
     public int getRow() {
         return row;
