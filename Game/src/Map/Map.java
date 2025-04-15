@@ -202,6 +202,105 @@ public class Map {
         }
     }
 
+    public static void checkEdges(int r, int c, int number) {
+        boolean Left;
+        boolean Right;
+        boolean Up;
+        boolean Down;
+
+        if(tiles[r][c] == Tile.grass) {
+            if(tiles[r-1][c] != Tile.grass){
+               Up = true;
+            }
+            else {
+                Up = false;
+            }
+
+            if(tiles[r+1][c] != Tile.grass) {
+                Down = true;
+            }
+            else {
+                Down = false;
+            }
+
+            if(tiles[r][c-1] != Tile.grass) {
+                Left = true;
+            }
+            else {
+                Left = false;
+            }
+
+            if(tiles[r][c+1] != Tile.grass) {
+                Right = true;
+            }
+            else {
+                Right = false;
+            }
+
+            if(Up && Down && Right && Left) {
+                tiles[r][c] = Tile.ALL_EDGES_GRASS;
+            }
+
+            else if(Up && Down && Left) {
+                tiles[r][c] = Tile.BOTTOM_LEFT_RIGHT_GRASS;
+            }
+
+            else if(Up && Down && Right) {
+                tiles[r][c] = Tile.RIGHT_TOP_BOTTOM_GRASS;
+            }
+
+            else if(Up && Left && Right) {
+                tiles[r][c] = Tile.TOP_LEFT_RIGHT_GRASS;
+            }
+
+            else if (Left && Right && Down) {
+                tiles[r][c] = Tile.BOTTOM_LEFT_RIGHT_GRASS;
+            }
+
+            else if(Up && Left) {
+                tiles[r][c] = Tile.TOP_LEFT_CORNER_GRASS;
+            }
+
+            else if(Up & Right) {
+                tiles[r][c] = Tile.TOP_RIGHT_CORNER_GRASS;
+            }
+
+            else if(Down && Left) {
+                tiles[r][c] = Tile.BOTTOM_LEFT_GRASS;
+            }
+
+            else if(Down && Right) {
+                tiles[r][c] = Tile.BOTTOM_RIGHT_GRASS;
+            }
+
+            else if(Left && Right) {
+                tiles[r][c] = Tile.MIDDLE_LEFT_RIGHT_GRASS;
+            }
+
+            else if(Up && Down) {
+                tiles[r][c] = Tile.BOTTOM_MIDDLE_GRASS;
+            }
+
+            else if(Up) {
+                tiles[r][c] = Tile.TOP_MIDDLE_GRASS;
+            }
+
+            else if(Left) {
+                tiles[r][c] = Tile.MIDDLE_LEFT_GRASS;
+            }
+
+            else if(Right) {
+                tiles[r][c] = Tile.MIDDLE_RIGHT_GRASS;
+            }
+
+            else if(Down) {
+                tiles[r][c] = Tile.BOTTOM_MIDDLE_GRASS;
+            }
+        }
+
+
+    }
+
     public static String convertToString(Tile[][] map) {
         String result = "";
         for(Tile[] T : tiles)for(Tile t: T){
