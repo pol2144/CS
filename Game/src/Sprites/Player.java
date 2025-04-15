@@ -5,14 +5,18 @@ public class Player {
     private int row;
     private int column;
 
-    public Player(int row, int column, Sprite sprite, Type type) {
+    public Player(int row, int column, Type type) {
         this.row = row;
         this.column = column;
         this.type = type;
     }
 
-    public void move(int newRow, int newColumn) {
+    public void pathTracing() {
 
+    }
+
+    public Type getType() {
+        return type;
     }
 
     public int getRow() {

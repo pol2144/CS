@@ -1,6 +1,7 @@
 package Client;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Settings {
     public final static int PORT = 2144;
