@@ -2,12 +2,10 @@ package Server;
 
 import Map.Map;
 import Map.Tile;
-import com.sun.security.ntlm.Client;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -30,7 +28,7 @@ public class WindowedServer extends Application {
     public static Text connectingLabel;
     public static Text playerCounter;
     public static ServerState serverState;
-    public static PlayerHandler[] playerHandlers = new PlayerHandler[Settings.PLAYER_LIMiIT];
+    public static PlayerHandler[] playerHandlers = new PlayerHandler[Settings.PLAYER_LIMIT];
     public static int playerCount = 0;
     public static ServerSocket serverSocket;
 
@@ -76,7 +74,7 @@ public class WindowedServer extends Application {
     }
 
     private void connectPlayer() {
-        if(playerCount<Settings.PLAYER_LIMiIT) {
+        if(playerCount<Settings.PLAYER_LIMIT) {
             serverState = ServerState.WaitingForPlayers;
             Socket socket = null;
             try {
