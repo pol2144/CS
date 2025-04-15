@@ -11,9 +11,7 @@ public class Player {
         this.type = type;
     }
 
-    public void pathTracing() {
-
-    }
+    public void pathTracing() {}
 
     public Type getType() {
         return type;
