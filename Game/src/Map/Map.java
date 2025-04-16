@@ -1,6 +1,10 @@
 package Map;
 
 import Client.Settings;
+import Sprites.Images;
+import Sprites.MultiAnimatedSprite;
+import Sprites.Sprite;
+import Sprites.StaticSprite;
 
 public class Map {
     private static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
@@ -11,6 +15,16 @@ public class Map {
         for (int r = 0; r < tiles.length ; r++) {
             for (int c = 0; c < tiles[0].length ; c++) {
                 tiles[r][c] = Tile.grass;
+                if (Math.random()*10 < 1) {
+                    StaticSprite tree = new MultiAnimatedSprite(10, c, r, 5, Images.TREE);
+
+                    if (tree instanceof MultiAnimatedSprite) {
+                        ((MultiAnimatedSprite) tree).changeAnimationTo(2);
+                    }
+                    if (tree instanceof MultiAnimatedSprite) {
+                        ((MultiAnimatedSprite) tree).changeAnimationTo(0);
+                    }
+                }
             }
         }
 

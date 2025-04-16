@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 
-public class MultiAnimatedSprite extends Sprite {
+public class MultiAnimatedSprite extends StaticSprite {
     private int currentAnimationRow;
     private int currentAnimationFrame;
 

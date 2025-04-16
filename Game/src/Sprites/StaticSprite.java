@@ -1,7 +1,9 @@
 package Sprites;
 
 
-public class StaticSprite {
+import javafx.scene.image.ImageView;
+
+public class StaticSprite extends ImageView {
     private int number = 0;
     private int y;
     private int x;
@@ -9,7 +11,6 @@ public class StaticSprite {
     private double width;
     private double height;
 
-    public static final Images tree = Images.valueOf("Tree");
     public StaticSprite(int x, int y, int hp, double width, double height) {
         this.x = x;
         this.y = y;
