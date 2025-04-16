@@ -5,26 +5,17 @@ import Sprites.Images;
 import Sprites.MultiAnimatedSprite;
 import Sprites.Sprite;
 import Sprites.StaticSprite;
+import sun.reflect.generics.tree.Tree;
 
 public class Map {
     private static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
-    //Sprite[][] sprites;
+    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
     public static final double spillChance = 0.8;
     public static final double sourcechance = 0.003;
     public static Tile[][] generateMap() {
         for (int r = 0; r < tiles.length ; r++) {
             for (int c = 0; c < tiles[0].length ; c++) {
                 tiles[r][c] = Tile.grass;
-                if (Math.random()*10 < 1) {
-                    StaticSprite tree = new MultiAnimatedSprite(10, c, r, 5, Images.TREE);
-
-                    if (tree instanceof MultiAnimatedSprite) {
-                        ((MultiAnimatedSprite) tree).changeAnimationTo(2);
-                    }
-                    if (tree instanceof MultiAnimatedSprite) {
-                        ((MultiAnimatedSprite) tree).changeAnimationTo(0);
-                    }
-                }
             }
         }
 
@@ -216,7 +207,7 @@ public class Map {
         }
     }
 
-    public static void checkEdges(int r, int c, int number) {
+    public static void checkEdges(int r, int c) {
         boolean Left;
         boolean Right;
         boolean Up;
@@ -311,8 +302,107 @@ public class Map {
                 tiles[r][c] = Tile.BOTTOM_MIDDLE_GRASS;
             }
         }
+        else if(tiles[r][c] == Tile.sand) {
+            if(tiles[r-1][c] != Tile.sand){
+                Up = true;
+            }
+            else {
+                Up = false;
+            }
 
+            if(tiles[r+1][c] != Tile.sand) {
+                Down = true;
+            }
+            else {
+                Down = false;
+            }
 
+            if(tiles[r][c-1] != Tile.sand) {
+                Left = true;
+            }
+            else {
+                Left = false;
+            }
+
+            if(tiles[r][c+1] != Tile.sand) {
+                Right = true;
+            }
+            else {
+                Right = false;
+            }
+
+            if(Up && Down && Right && Left) {
+                tiles[r][c] = Tile.ALL_EDGES_SAND;
+            }
+
+            else if(Up && Down && Left) {
+                tiles[r][c] = Tile.BOTTOM_LEFT_RIGHT_SAND;
+            }
+
+            else if(Up && Down && Right) {
+                tiles[r][c] = Tile.RIGHT_TOP_BOTTOM_SAND;
+            }
+
+            else if(Up && Left && Right) {
+                tiles[r][c] = Tile.TOP_LEFT_RIGHT_SAND;
+            }
+
+            else if (Left && Right && Down) {
+                tiles[r][c] = Tile.BOTTOM_LEFT_RIGHT_SAND;
+            }
+
+            else if(Up && Left) {
+                tiles[r][c] = Tile.TOP_LEFT_CORNER_SAND;
+            }
+
+            else if(Up & Right) {
+                tiles[r][c] = Tile.TOP_RIGHT_CORNER_SAND;
+            }
+
+            else if(Down && Left) {
+                tiles[r][c] = Tile.BOTTOM_LEFT_SAND;
+            }
+
+            else if(Down && Right) {
+                tiles[r][c] = Tile.BOTTOM_RIGHT_SAND;
+            }
+
+            else if(Left && Right) {
+                tiles[r][c] = Tile.MIDDLE_LEFT_RIGHT_SAND;
+            }
+
+            else if(Up && Down) {
+                tiles[r][c] = Tile.BOTTOM_MIDDLE_SAND;
+            }
+
+            else if(Up) {
+                tiles[r][c] = Tile.TOP_MIDDLE_SAND;
+            }
+
+            else if(Left) {
+                tiles[r][c] = Tile.MIDDLE_LEFT_SAND;
+            }
+
+            else if(Right) {
+                tiles[r][c] = Tile.MIDDLE_RIGHT_SAND;
+            }
+
+            else if(Down) {
+                tiles[r][c] = Tile.BOTTOM_MIDDLE_SAND;
+            }
+        }
+    }
+
+    public static void spawnTrees(int r, int c) {
+        for (r = 0; r < tiles.length; r++) {
+            for (c = 0; c < tiles[0].length; c++) {
+                if(tiles[r][c] == Tile.grass) {
+                    if(Math.random() < 0.1) {
+                        sprites[r][c] = new MultiAnimatedSprite(10,10,10,10,Images.TREE);
+                    }
+                }
+            }
+        }
     }
 
     public static String convertToString(Tile[][] map) {

@@ -1,7 +1,7 @@
 package Sprites;
 
 public enum Images {
-    TREE("Tiny Swords/Resources/Tree.png", 64, 64, 1, new int[]{1,2,3,4,5,6});
+     TREE("Tiny Swords/Resources/Tree.png", 64, 64, 1, new int[]{1,2,3,4,5,6});
 
     public final String filename;
     public final int width;
