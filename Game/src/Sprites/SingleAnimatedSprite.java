@@ -5,7 +5,6 @@ import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +43,6 @@ public class SingleAnimatedSprite extends Sprite implements Drawable {
     }
 
     @Override
-    public void draw() {
-
-    }
-    public void setImage(Image image) {
-        imageView.setImage(image);
-    }
-
+    public void draw() {}
 }
 

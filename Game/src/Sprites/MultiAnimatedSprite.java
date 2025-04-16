@@ -13,7 +13,7 @@ public class MultiAnimatedSprite extends Sprite {
     private int currentAnimationFrame;
 
     public MultiAnimatedSprite(int hp, int x, int y, int animationSpeed, Images imageFromEnum) {
-        super(hp ,x, y, imageFromEnum.width, imageFromEnum.height);
+        super(x, y, hp, imageFromEnum.width, imageFromEnum.height);
         setImage(new Image("file:" + imageFromEnum.filename));
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0 / animationSpeed), event -> {

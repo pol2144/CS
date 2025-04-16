@@ -12,14 +12,13 @@ public class Sprite extends ImageView{
 
     private Type type;
 
-    public Sprite(int hp, int x, int y, double width, double heigth) {
+    public Sprite(int x, int y, int hp, double width, double height) {
         this.x = x;
         this.y = y;
         this.hp = hp;
         this.width = width;
-        this.height = heigth;
+        this.height = height;
     }
-
 
     public void move(double dx, double dy) {
         setLayoutX(getLayoutX() + dx);
@@ -27,11 +26,4 @@ public class Sprite extends ImageView{
         x += dx;
         y += dy;
     }
-
-
-    public Type getType() {return type;}
-    public int getNumber() {
-        return number;
-    }
-
 }
