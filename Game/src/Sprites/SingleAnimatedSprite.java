@@ -3,8 +3,8 @@ package Sprites;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,9 @@ public class SingleAnimatedSprite extends Sprite implements Drawable {
     private int currentFrame;
     private int animationSpeed;
     private int cooldawn;
+    private ImageView imageView;
 
-    public SingleAnimatedSprite(double x, double y, int hp, double width, double height,
+    public SingleAnimatedSprite(int x, int y, int hp, double width, double height,
                                 String folder, int animationSpeed, boolean fromRandomFrame) {
         super(x, y, hp, width, height);
         File[] allFilesAndFolders = new File(folder).listFiles();
@@ -42,8 +43,6 @@ public class SingleAnimatedSprite extends Sprite implements Drawable {
     }
 
     @Override
-    public void draw() {
-
-    }
+    public void draw() {}
 }
 

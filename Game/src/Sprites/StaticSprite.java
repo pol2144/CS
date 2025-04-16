@@ -1,8 +1,9 @@
 package Sprites;
 
+
 import javafx.scene.image.ImageView;
 
-public class Sprite extends ImageView{
+public class StaticSprite extends ImageView {
     private int number = 0;
     private int y;
     private int x;
@@ -10,9 +11,7 @@ public class Sprite extends ImageView{
     private double width;
     private double height;
 
-    private Type type;
-
-    public Sprite(int x, int y, int hp, double width, double height) {
+    public StaticSprite(int x, int y, int hp, double width, double height) {
         this.x = x;
         this.y = y;
         this.hp = hp;
@@ -20,10 +19,4 @@ public class Sprite extends ImageView{
         this.height = height;
     }
 
-    public void move(double dx, double dy) {
-        setLayoutX(getLayoutX() + dx);
-        setLayoutY(getLayoutY() + dy);
-        x += dx;
-        y += dy;
-    }
 }

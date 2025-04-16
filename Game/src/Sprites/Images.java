@@ -1,8 +1,7 @@
 package Sprites;
 
 public enum Images {
-    PLAYER("images/Character 1.png", 64, 64, 6, new int[]{4, 4, 6, 6, 3, 4}),
-    ;
+    TREE("Tiny Swords/Resources/Tree.png", 64, 64, 1, new int[]{1,2,3,4,5,6});
 
     public final String filename;
     public final int width;
