@@ -23,6 +23,7 @@ import java.io.*;
 import java.net.Socket;
 
 import static Map.Tile.*;
+import static Sprites.Tree.toTree;
 
 public class Client extends Application {
     public static VBox root;
@@ -130,7 +131,7 @@ public class Client extends Application {
                             for (int c = 0; c < Settings.MAP_WIDTH; c++) {
                                 switch (msg[n].split(",")[0]){
                                     case "Tree":
-                                        sprites[r][c] = Tree.toTree(msg[n]);
+                                        sprites[r][c] = toTree(msg[n]);
                                         n++;
                                 }
                             }
