@@ -3,7 +3,7 @@ package Sprites;
 
 import javafx.scene.image.ImageView;
 
-public class StaticSprite extends ImageView {
+public class Tree extends ImageView {
     private int number = 0;
     private int y;
     private int x;
@@ -11,7 +11,7 @@ public class StaticSprite extends ImageView {
     private double width;
     private double height;
 
-    public StaticSprite(int x, int y, int hp, double width, double height) {
+    public Tree(int x, int y, int hp, double width, double height) {
         this.x = x;
         this.y = y;
         this.hp = hp;

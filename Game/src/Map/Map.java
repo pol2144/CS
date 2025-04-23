@@ -3,13 +3,17 @@ package Map;
 import Client.Settings;
 import Sprites.Images;
 import Sprites.MultiAnimatedSprite;
-import Sprites.Sprite;
 import Sprites.StaticSprite;
 import sun.reflect.generics.tree.Tree;
 
 public class Map {
+<<<<<<< HEAD
     private static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
 //    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+=======
+    public static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+>>>>>>> origin/main
     public static final double spillChance = 0.8;
     public static final double sourcechance = 0.003;
     public static Tile[][] generateMap() {
