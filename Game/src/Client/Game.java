@@ -1,6 +1,7 @@
 package Client;
 
 import Map.Tile;
+import Sprites.Sprite;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -20,6 +21,7 @@ public class Game  extends Application {
     public static PrintWriter out;
     public static Socket socket;
     public static Scanner scanner = new Scanner(System.in);
+    public static Sprite[][] sprites = new Sprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
     public static Tile[][] map = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
     public static void main(String[] args) {
         connectToServer();
