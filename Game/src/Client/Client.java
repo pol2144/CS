@@ -153,6 +153,7 @@ public class Client extends Application {
         grid.setLayoutX(0);
         grid.setLayoutY(0);
         displayMap();
+        displaySprites();
         root.getChildren().add(grid);
         Scene scene = new Scene(root, 1920, 1080);
 
@@ -174,6 +175,7 @@ public class Client extends Application {
     }
 
     private void displayMap() {
+        grid = new GridPane();
         for (int r = row; r < row+Settings.VISIBLE_TILES_ROWS; r++) {
             for (int c = col; c < col+Settings.VISIBLE_TILES_COLUMNS; c++) {
                 ImageView img = null;
@@ -200,9 +202,13 @@ public class Client extends Application {
         }
     }
     public static void displaySprites(){
+        gameRoot = new AnchorPane();
         for (int r = row; r < Settings.MAP_HEIGHT+row; r++) {
             for (int c = col; c < Settings.MAP_HEIGHT+col; c++) {
-
+                if(sprites[r][c] ==null)break;
+                if(sprites[r][c] instanceof Tree){
+                    root.getChildren().add(sprites[r][c]);
+                }
             }
         }
 
