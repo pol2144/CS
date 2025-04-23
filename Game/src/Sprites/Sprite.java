@@ -30,10 +30,10 @@ public class Sprite extends ImageView{
         if(dx == 0 && dy == 0) {
             return;
         }
-        if (GameServer.map[(int) (this.getY() + dy)][(int) (this.getX() + dx)].isWalkable()) {
-            this.teleport(dx, dy);
+        if (this.x > dx){
+
         }
     }
-
-
 }
+//GameServer.map[(int) (this.getY() + dy)][(int) (this.getX() + dx)].isWalkable()
+
