@@ -21,6 +21,12 @@ public class Game  extends Application {
     public static Socket socket;
     public static Scanner scanner = new Scanner(System.in);
     public static Tile[][] map = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+    Stage stage;
+    AnchorPane root;
+    GridPane gridPane;
+    public static int r;
+    public static int c;
+
     public static void main(String[] args) {
         connectToServer();
         try {
@@ -88,27 +94,30 @@ public class Game  extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Stage stage = new Stage();
-        AnchorPane root = new AnchorPane();
-        GridPane gridPane = new GridPane();
-        for (int r = 0; r < Settings.MAP_HEIGHT; r++) {
-            for (int c = 0; c < Settings.MAP_WIDTH; c++) {
+        stage = new Stage();
+        root = new AnchorPane();
+        gridPane = new GridPane();
+    }
+
+    public void displayMap() {
+        for (int r = 0; r < Settings.VISIBLE_TILES_ROWS; r++) {
+            for (int c = 0; c < Settings.VISIBLE_TILES_COLUMNS; c++) {
                 ImageView img = null;
                 switch(map[r][c]) {
                     case grass:
-                         img = new ImageView(Settings.MIDDLE_GRASS);
+                        img = new ImageView(Settings.MIDDLE_GRASS);
                         img.setFitWidth(Settings.TILE_SIZE_WIDTH);
                         img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                         gridPane.add(img,r,c);
                         break;
                     case sand:
-                         img = new ImageView(Settings.MIDDLE_SAND);
+                        img = new ImageView(Settings.MIDDLE_SAND);
                         img.setFitWidth(Settings.TILE_SIZE_WIDTH);
                         img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                         gridPane.add(img,r,c);
                         break;
                     case water:
-                         img = new ImageView(Settings.WATER);
+                        img = new ImageView(Settings.WATER);
                         img.setFitWidth(Settings.TILE_SIZE_WIDTH);
                         img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                         gridPane.add(img,r,c);
@@ -125,7 +134,6 @@ public class Game  extends Application {
         stage.setResizable(false);
         stage.show();
         new Thread(new ClientHandler()).start();
-
     }
 
     private class ClientHandler implements Runnable {

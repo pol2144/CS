@@ -1,6 +1,8 @@
 package Client;
 
 import Map.Tile;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.net.Socket;
@@ -31,6 +34,8 @@ public class Client extends Application {
     public static GridPane grid;
     public static AnchorPane gameRoot;
     public static boolean ready = false;
+    public static int row=0;
+    public static int col=0;
 
     public static void main(String[] args) {
         argss = args;
@@ -127,31 +132,46 @@ public class Client extends Application {
         displayMap();
         root.getChildren().add(grid);
         Scene scene = new Scene(root, 1920, 1080);
+
+        scene.setOnMouseMoved(event -> {
+            int c = (int)event.getX();
+            int r = (int)event.getY();
+
+            if(c < 10 && col > 0) {
+                col --;
+            }
+
+            if(c > Settings.VISIBLE_TILES_COLUMNS * Settings.TILE_SIZE_WIDTH-10 && col<Settings.MAP_WIDTH){
+                col++;
+            }
+        });
+
         stage.setScene(scene);
         stage.show();
     }
 
     private void displayMap() {
-        for (int r = 0; r < Settings.MAP_HEIGHT; r++) {
-            for (int c = 0; c < Settings.MAP_WIDTH; c++) {
+        for (int r = row; r < row+Settings.VISIBLE_TILES_ROWS; r++) {
+            for (int c = col; c < col+Settings.VISIBLE_TILES_COLUMNS; c++) {
                 ImageView img = null;
-                if(map[r][c]==grass){
+                if(map[r][c]==grass) {
                     img = new ImageView(Settings.MIDDLE_GRASS);
                     img.setFitWidth(Settings.TILE_SIZE_WIDTH);
                     img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                     grid.add(img,r,c);
-                }else if(map[r][c]==water){
+                }
+                else if(map[r][c]==water) {
                     img = new ImageView(Settings.WATER);
                     img.setFitWidth(Settings.TILE_SIZE_WIDTH);
                     img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                     grid.add(img,r,c);
-                }else if(map[r][c]==sand){
+                }
+                else if(map[r][c]==sand) {
                     img = new ImageView(Settings.MIDDLE_SAND);
                     img.setFitWidth(Settings.TILE_SIZE_WIDTH);
                     img.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                     grid.add(img,r,c);
                 }
-
             }
         }
     }
