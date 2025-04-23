@@ -3,7 +3,7 @@ package Sprites;
 import Server.GameServer;
 import javafx.scene.image.ImageView;
 
-public class Sprite extends ImageView{
+public class Sprite extends ImageView {
     private int number = 0;
     private int y;
     private int x;
@@ -21,17 +21,21 @@ public class Sprite extends ImageView{
         this.height = height;
     }
 
-    private void teleport(double dx, double dy){
+    private void teleport(double dx, double dy) {
         this.setX(this.getX() + dx);
         this.setY(this.getY() + dy);
     }
 
-    private void pathing(double dx, double dy){
-        if(dx == 0 && dy == 0) {
+    private void pathing(double dx, double dy) {
+        if (dx == 0 && dy == 0) {
             return;
         }
-        if (this.x > dx){
-
+        for (int i = 0; i < dx; i++) {
+            if (this.x > dx) {
+                this.setX(this.getX() - 1);
+            } else if (this.x < dx) {
+                this.setX(this.getX() + 1);
+            }
         }
     }
 }
