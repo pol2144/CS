@@ -3,12 +3,14 @@ package Map;
 import Client.Settings;
 import Sprites.Images;
 import Sprites.MultiAnimatedSprite;
+import Sprites.Sprite;
 import Sprites.StaticSprite;
-import sun.reflect.generics.tree.Tree;
+import Sprites.Tree;
 
 public class Map {
-    public static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
-    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+
+    private static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+//    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
     public static final double spillChance = 0.8;
     public static final double sourcechance = 0.003;
     public static Tile[][] generateMap() {
@@ -392,16 +394,18 @@ public class Map {
         }
     }
 
-    public static void spawnTrees(int r, int c) {
+    public static Sprite[][] spawnTrees(int r, int c) {
+        Sprite[][] sprites = new Sprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
         for (r = 0; r < tiles.length; r++) {
             for (c = 0; c < tiles[0].length; c++) {
                 if(tiles[r][c] == Tile.grass) {
                     if(Math.random() < 0.1) {
-                        sprites[r][c] = new MultiAnimatedSprite(10,10,10,10,Images.TREE);
+                        sprites[r][c] = new Tree(r,c,100,10,30);
                     }
                 }
             }
         }
+        return sprites;
     }
 
     public static String convertToString(Tile[][] map) {
@@ -412,4 +416,7 @@ public class Map {
         return result;
     }
 
+    public static String convertToString(Sprite[][] sprites) {
+        return "";
+    }
 }

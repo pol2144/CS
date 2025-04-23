@@ -1,15 +1,14 @@
 package Client;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class Settings {
     public final static int PORT = 2144;
     public final static int PLAYER_LIMIT = 4;
     public final static int TILE_SIZE_HEIGHT = 20;
     public final static int TILE_SIZE_WIDTH = 20;
-    public final static int MAP_HEIGHT = 100;
-    public final static int MAP_WIDTH = 100;
+    public final static int MAP_HEIGHT = 1000;
+    public final static int MAP_WIDTH = 1000;
 
     public final static String TITTLE = "Super Amazing Strategy Game";
 
@@ -45,5 +44,8 @@ public class Settings {
     public final static Image ALL_EDGES_GRASS = new Image("file:Tiny Swords/Ground/130.png");
     public static final Image ALL_EDGES_SAND = new Image("file:Tiny Swords/Ground/230.png");
     public static final Image WATER = new Image("file:Tiny Swords/Ground/000.png");
+
+    public static final int VISIBLE_TILES_ROWS = 1080/TILE_SIZE_WIDTH;
+    public static final int VISIBLE_TILES_COLUMNS = 1920/TILE_SIZE_HEIGHT;
 }
 
