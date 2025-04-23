@@ -23,4 +23,9 @@ public enum Tile {
         if(this == sand)return "sand";
         return "";
     }
+
+    public boolean isWalkable() {
+        if(this == grass || this == sand)return true;
+        return false;
+    }
 }

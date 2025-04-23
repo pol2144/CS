@@ -1,5 +1,6 @@
 package Sprites;
 
+import Server.GameServer;
 import javafx.scene.image.ImageView;
 
 public class Sprite extends ImageView{
@@ -29,7 +30,10 @@ public class Sprite extends ImageView{
         if(dx == 0 && dy == 0) {
             return;
         }
-        if () {
+        if (GameServer.map[(int) (this.getY() + dy)][(int) (this.getX() + dx)].isWalkable()) {
+            this.teleport(dx, dy);
         }
     }
+
+
 }
