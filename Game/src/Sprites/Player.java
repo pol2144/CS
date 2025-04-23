@@ -1,5 +1,7 @@
 package Sprites;
 
+import Map.Map;
+
 public class Player {
     private Type type;
     private int row;
@@ -10,9 +12,6 @@ public class Player {
         this.column = column;
         this.type = type;
     }
-
-    public void pathTracing() {}
-
     public Type getType() {
         return type;
     }

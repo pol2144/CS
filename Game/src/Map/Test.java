@@ -25,16 +25,6 @@ public class Test extends Application {
                     imageview.setFitHeight(Settings.TILE_SIZE_HEIGHT);
                     imageview.setFitWidth(Settings.TILE_SIZE_WIDTH);
                     gridPane.add(imageview,c,r);
-                    if (Math.random()*10 < 1) {
-                        Sprite tree = new MultiAnimatedSprite(10, c, r, 5, Images.TREE);
-                        gridPane.add(tree, c, r);
-                        if (tree instanceof MultiAnimatedSprite) {
-                            ((MultiAnimatedSprite) tree).changeAnimationTo(2);
-                        }
-                        if (tree instanceof MultiAnimatedSprite) {
-                            ((MultiAnimatedSprite) tree).changeAnimationTo(0);
-                        }
-                    }
                 }
             }
         }

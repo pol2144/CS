@@ -20,10 +20,16 @@ public class Sprite extends ImageView{
         this.height = height;
     }
 
-    public void move(double dx, double dy) {
-        setLayoutX(getLayoutX() + dx);
-        setLayoutY(getLayoutY() + dy);
-        x += dx;
-        y += dy;
+    private void teleport(double dx, double dy){
+        this.setX(this.getX() + dx);
+        this.setY(this.getY() + dy);
+    }
+
+    private void pathing(double dx, double dy){
+        if(dx == 0 && dy == 0) {
+            return;
+        }
+        if () {
+        }
     }
 }
