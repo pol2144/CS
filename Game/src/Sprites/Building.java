@@ -2,7 +2,7 @@ package Sprites;
 
 import javafx.scene.image.ImageView;
 
-public class Building extends ImageView {
+public class Building extends Sprite{
     private int number = 0;
     private int y;
     private int x;
@@ -11,11 +11,7 @@ public class Building extends ImageView {
     private double height;
 
     public Building(int x, int y, int hp, double width, double height) {
-        this.x = x;
-        this.y = y;
-        this.hp = hp;
-        this.width = width;
-        this.height = height;
+        super(x,y,hp,width,height);
     }
 
     @Override
