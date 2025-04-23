@@ -9,7 +9,7 @@ import sun.reflect.generics.tree.Tree;
 
 public class Map {
     private static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
-    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+//    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
     public static final double spillChance = 0.8;
     public static final double sourcechance = 0.003;
     public static Tile[][] generateMap() {
@@ -41,6 +41,7 @@ public class Map {
                     tiles[r-1][c-1] = Tile.water;
                     SpillWater(r - 1, c - 1,depth-1);
             }
+            public static Sprite[][] sprites = new Sprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
 
             if(r+1 < tiles.length && c-1 >= 0) {
                     tiles[r+1][c-1] = Tile.water;
@@ -393,16 +394,18 @@ public class Map {
         }
     }
 
-    public static void spawnTrees(int r, int c) {
+    public static Sprite[][] spawnTrees(int r, int c) {
+        Sprite[][] sprites = new Sprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
         for (r = 0; r < tiles.length; r++) {
             for (c = 0; c < tiles[0].length; c++) {
                 if(tiles[r][c] == Tile.grass) {
                     if(Math.random() < 0.1) {
-                        sprites[r][c] = new MultiAnimatedSprite(10,10,10,10,Images.TREE);
+                        sprites[r][c] = new
                     }
                 }
             }
         }
+        return sprites;
     }
 
     public static String convertToString(Tile[][] map) {
