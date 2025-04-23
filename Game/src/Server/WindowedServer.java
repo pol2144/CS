@@ -2,6 +2,7 @@ package Server;
 
 import Map.Map;
 import Map.Tile;
+import Sprites.Sprite;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,6 +25,7 @@ import Client.Settings;
 
 public class WindowedServer extends Application {
     public static Tile[][] map;
+    public static Sprite[][] sprites = new Sprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
     public static Stage stage;
     public static Text connectingLabel;
     public static Text playerCounter;

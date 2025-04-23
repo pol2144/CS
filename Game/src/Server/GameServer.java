@@ -19,15 +19,16 @@ public class GameServer {
     public static Scanner scanner;
     public static Tile[][] map;
     public static Thread[] playerHandlers;
+
     public static void main(String[] args) {
         setup();
         connectPlayer();
-        String msg="";
-        while (true){
+        String msg = "";
+        while (true) {
             state = ServerState.WaitingForCommand;
             for (int i = 0; i < playerCount; i++) {
                 try {
-                    if(playerInputs[i].ready()){
+                    if (playerInputs[i].ready()) {
                         msg = playerInputs[i].readLine();
                         switch (msg) {
                             case "connect":
@@ -42,24 +43,23 @@ public class GameServer {
                             case "exit":
                                 break;
                             default:
-                                for (int n= 0; n < playerCount; n++) {
-                                    if(n!=i) {
-                                        playerOutputs[n].println("Player"+String.valueOf(i+1)+": "+msg);
+                                for (int n = 0; n < playerCount; n++) {
+                                    if (n != i) {
+                                        playerOutputs[n].println("Player" + String.valueOf(i + 1) + ": " + msg);
                                     }
                                 }
                                 break;
 
                         }
-                        if(msg.equals("exit")) break;
+                        if (msg.equals("exit")) break;
 
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(msg.equals("exit")) break;
-            if(state == ServerState.Playing)break;
-
+            if (msg.equals("exit")) break;
+            if (state == ServerState.Playing) break;
 
 
         }
@@ -80,72 +80,74 @@ public class GameServer {
         map = Map.generateMap();
         sendEveryone(Map.convertToString(map));
         playerHandlers = new Thread[playerCount];
-       while (true){
-           for (int i = 0; i < playerCount; i++) {
-               try {
-                   if(playerInputs[i].ready()){
-                       String[] msg = playerInputs[i].readLine().split(";");
-                   }
-               } catch (IOException e) {
-                   throw new RuntimeException(e);
-               }
-           }
-       }
+        while (true) {
+            for (int i = 0; i < playerCount; i++) {
+                try {
+                    if (playerInputs[i].ready()) {
+                        String[] msg = playerInputs[i].readLine().split(";");
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     private static void setup() {
         try {
             serverSocket = new ServerSocket(2144);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static void connectPlayer() {
         state = ServerState.WaitingForPlayers;
-        if(playerCount<playerSockets.length){
+        if (playerCount < playerSockets.length) {
             try {
-                System.out.println("the serves address is: "+ Inet4Address.getLocalHost());
+                System.out.println("the serves address is: " + Inet4Address.getLocalHost());
                 System.out.println("waiting for connection...");
 
                 playerSockets[playerCount] = serverSocket.accept();
                 playerInputs[playerCount] = new BufferedReader(new InputStreamReader(playerSockets[playerCount].getInputStream()));
                 playerOutputs[playerCount] = new PrintWriter(playerSockets[playerCount].getOutputStream(), true);
                 playerCount++;
-                System.out.println("player "+playerCount+" connected");
-            }catch (IOException e){
+                System.out.println("player " + playerCount + " connected");
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             state = ServerState.Error;
             System.out.println("full capacity reached");
         }
     }
-    private static void connectPlayer(int commandCaller ) {
+
+    private static void connectPlayer(int commandCaller) {
         state = ServerState.WaitingForPlayers;
-        if(playerCount<playerSockets.length){
+        if (playerCount < playerSockets.length) {
             try {
-                System.out.println("the serves address is: "+ Inet4Address.getLocalHost());
+                System.out.println("the serves address is: " + Inet4Address.getLocalHost());
                 System.out.println("waiting for connection...");
-                playerOutputs[commandCaller].println("the serves address is: "+ Inet4Address.getLocalHost());
+                playerOutputs[commandCaller].println("the serves address is: " + Inet4Address.getLocalHost());
                 playerOutputs[commandCaller].println("waiting for connection...");
                 playerSockets[playerCount] = serverSocket.accept();
                 playerInputs[playerCount] = new BufferedReader(new InputStreamReader(playerSockets[playerCount].getInputStream()));
                 playerOutputs[playerCount] = new PrintWriter(playerSockets[playerCount].getOutputStream(), true);
                 playerCount++;
-                System.out.println("player "+playerCount+" connected");
-                playerOutputs[commandCaller].println("player "+playerCount+" connected");
-            }catch (IOException e){
+                System.out.println("player " + playerCount + " connected");
+                playerOutputs[commandCaller].println("player " + playerCount + " connected");
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             state = ServerState.Error;
             System.out.println("full capacity reached");
         }
     }
-    public class serverHandler implements Runnable{
+
+    public class serverHandler implements Runnable {
         public void run() {
-            while(true){
+            while (true) {
 
             }
         }
