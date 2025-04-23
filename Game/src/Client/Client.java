@@ -1,7 +1,10 @@
 package Client;
 
 import Map.Tile;
+import Sprites.Sprite;
+import Sprites.Tree;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,6 +23,8 @@ import static Map.Tile.*;
 
 public class Client extends Application {
     public static VBox root;
+    public static Sprite[][] sprites;
+
     public static TextField adressField;
     public static Button connectButton;
     public static Text confirmation;
@@ -109,7 +114,25 @@ public class Client extends Application {
                                 n++;
                             }
                         }
-                        ready = true;
+                        sprites = new Sprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
+                        try {
+                            msg = in.readLine().split(";");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        n = 0;
+                        for (int r = 0; r < Settings.MAP_HEIGHT; r++) {
+                            for (int c = 0; c < Settings.MAP_WIDTH; c++) {
+                                switch (msg[n].split(",")[0].equals("Tree"))){
+                                    case "Tree":
+                                        sprites[r][c] = Tree.toTree(msg[n]);
+                                        n++;
+                                }
+                            }
+                        }
+                        Platform.runLater(() -> lauchGame());
+
+
 
 
                 }

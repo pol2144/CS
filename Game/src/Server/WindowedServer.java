@@ -137,6 +137,7 @@ public class WindowedServer extends Application {
         serverState = ServerState.Playing;
         sendEveryone("start");
         sendEveryone(Map.convertToString(map));
+        sendEveryone(Map.convertToString(sprites));
 
     }
 

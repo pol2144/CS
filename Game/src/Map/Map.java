@@ -3,17 +3,14 @@ package Map;
 import Client.Settings;
 import Sprites.Images;
 import Sprites.MultiAnimatedSprite;
+import Sprites.Sprite;
 import Sprites.StaticSprite;
-import sun.reflect.generics.tree.Tree;
+import Sprites.Tree;
 
 public class Map {
-<<<<<<< HEAD
+
     private static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
 //    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
-=======
-    public static Tile[][] tiles = new Tile[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
-    static MultiAnimatedSprite[][] sprites = new MultiAnimatedSprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
->>>>>>> origin/main
     public static final double spillChance = 0.8;
     public static final double sourcechance = 0.003;
     public static Tile[][] generateMap() {
@@ -45,7 +42,6 @@ public class Map {
                     tiles[r-1][c-1] = Tile.water;
                     SpillWater(r - 1, c - 1,depth-1);
             }
-            public static Sprite[][] sprites = new Sprite[Settings.MAP_HEIGHT][Settings.MAP_WIDTH];
 
             if(r+1 < tiles.length && c-1 >= 0) {
                     tiles[r+1][c-1] = Tile.water;
@@ -404,7 +400,7 @@ public class Map {
             for (c = 0; c < tiles[0].length; c++) {
                 if(tiles[r][c] == Tile.grass) {
                     if(Math.random() < 0.1) {
-                        sprites[r][c] = new
+                        sprites[r][c] = new Tree(r,c,100,10,30);
                     }
                 }
             }
@@ -420,4 +416,7 @@ public class Map {
         return result;
     }
 
+    public static String convertToString(Sprite[][] sprites) {
+        return "";
+    }
 }
