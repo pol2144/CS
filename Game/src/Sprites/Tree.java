@@ -1,7 +1,10 @@
 package Sprites;
 
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 public class Tree extends Sprite {
     private int number = 0;
@@ -15,6 +18,9 @@ public class Tree extends Sprite {
     public Tree(int x, int y, int hp, double width, double height) {
         super(x, y, hp, width, height);
         MultiAnimatedSprite tree = new MultiAnimatedSprite(10, x, y, 5, Tree);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0 / 6), event -> tree.changeAnimationTo(number++ % Tree.animationNumber)));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     @Override
