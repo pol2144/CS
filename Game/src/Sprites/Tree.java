@@ -24,7 +24,7 @@ public class Tree extends ImageView {
         return "Tree" + "," + x + "," + y + "," + hp + "," + width + "," + height;
     }
 
-    public static Sprite toTree(String string) {
+    public static Tree toTree(String string) {
         return new Tree(Integer.parseInt(string.split(",")[1]),Integer.parseInt(string.split(",")[2]), Integer.parseInt(string.split(",")[3]), Double.parseDouble(string.split(",")[4]), Double.parseDouble(string.split(",")[5]));
     }
 

@@ -200,7 +200,11 @@ public class Client extends Application {
         }
     }
     public static void displaySprites(){
-        for (int r = 0; r < Settings.MAP_HEIGHT; r++) {}
+        for (int r = row; r < Settings.MAP_HEIGHT+row; r++) {
+            for (int c = col; c < Settings.MAP_HEIGHT+col; c++) {
+
+            }
+        }
 
     }
 }
