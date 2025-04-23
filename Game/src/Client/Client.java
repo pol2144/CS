@@ -123,7 +123,7 @@ public class Client extends Application {
                         n = 0;
                         for (int r = 0; r < Settings.MAP_HEIGHT; r++) {
                             for (int c = 0; c < Settings.MAP_WIDTH; c++) {
-                                switch (msg[n].split(",")[0].equals("Tree"))){
+                                switch (msg[n].split(",")[0]){
                                     case "Tree":
                                         sprites[r][c] = Tree.toTree(msg[n]);
                                         n++;
@@ -177,6 +177,10 @@ public class Client extends Application {
 
             }
         }
+    }
+    public static void displaySprites(){
+        for (int r = 0; r < Settings.MAP_HEIGHT; r++) {}
+
     }
 }
 
