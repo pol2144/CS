@@ -10,9 +10,11 @@ public class Tree extends Sprite {
     private int hp;
     private double width;
     private double height;
+    Images Tree = Images.TREE;
 
     public Tree(int x, int y, int hp, double width, double height) {
         super(x, y, hp, width, height);
+        MultiAnimatedSprite tree = new MultiAnimatedSprite(10, x, y, 5, Tree);
     }
 
     @Override

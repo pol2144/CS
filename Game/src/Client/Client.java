@@ -165,9 +165,20 @@ public class Client extends Application {
                 col --;
             }
 
-            if(c > Settings.VISIBLE_TILES_COLUMNS * Settings.TILE_SIZE_WIDTH-10 && col<Settings.MAP_WIDTH){
-                col++;
+            if(c > Settings.VISIBLE_TILES_COLUMNS * Settings.TILE_SIZE_WIDTH - 10 && col < Settings.MAP_WIDTH) {
+                col ++;
             }
+
+            if(r < 10 && row > 0) {
+                row --;
+            }
+
+            if(r > Settings.VISIBLE_TILES_ROWS * Settings.TILE_SIZE_HEIGHT - 10 && row < Settings.MAP_HEIGHT) {
+                row ++;
+            }
+
+            displayMap();
+            displaySprites();
         });
 
         stage.setScene(scene);
