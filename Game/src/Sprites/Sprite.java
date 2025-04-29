@@ -3,6 +3,8 @@ package Sprites;
 import Server.GameServer;
 import javafx.scene.image.ImageView;
 
+import java.security.spec.PKCS8EncodedKeySpec;
+
 public class Sprite extends ImageView {
     private int number = 0;
     private int y;
@@ -10,8 +12,8 @@ public class Sprite extends ImageView {
     private int hp;
     private double width;
     private double height;
-
     private Type type;
+    Player player = new Player(1,1,Type.BLUE);
 
     public Sprite(int x, int y, int hp, double width, double height) {
         this.x = x;
@@ -27,17 +29,15 @@ public class Sprite extends ImageView {
     }
 
     private void pathing(double dx, double dy) {
-        if (dx == 0 && dy == 0) {
-            return;
-        }
         for (int i = 0; i < dx; i++) {
-            if (this.x > dx) {
-                this.setX(this.getX() - 1);
-            } else if (this.x < dx) {
-                this.setX(this.getX() + 1);
+            double currentX = Math.abs(player.getRow() - dx);
+            double currentY = Math.abs(player.getColumn() - dy);
+            double distance = Math.sqrt(currentX * currentX + currentY * currentY);
+
+            if (dx == player.getRow() && dy == player.getColumn()) {
+                return;
             }
         }
     }
 }
-//GameServer.map[(int) (this.getY() + dy)][(int) (this.getX() + dx)].isWalkable()
 
