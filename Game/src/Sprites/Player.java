@@ -1,7 +1,5 @@
 package Sprites;
 
-import Map.Map;
-
 public class Player {
     private Type type;
     private int row;

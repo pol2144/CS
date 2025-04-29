@@ -3,7 +3,6 @@ package Sprites;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class Tree extends Sprite {

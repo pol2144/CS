@@ -4,7 +4,6 @@ import Client.Settings;
 import Sprites.Images;
 import Sprites.MultiAnimatedSprite;
 import Sprites.Sprite;
-import Sprites.StaticSprite;
 import Sprites.Tree;
 
 public class Map {
