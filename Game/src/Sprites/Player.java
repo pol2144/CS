@@ -49,7 +49,6 @@ public class Player {
         List<PathFinder.Node> path = pathFinder.findPath(start, goal, tempObstacles);
         
         if (!path.isEmpty()) {
-            // Remove the first node (current position)
             if (path.size() > 1) {
                 path.remove(0);
                 this.currentPath = path;

@@ -39,27 +39,23 @@ public class PathingTest extends Application {
         PathFinder pathFinder = new PathFinder();
         Set<PathFinder.Node> obstacles = new HashSet<>();
 
-        // Add some obstacles (black tiles)
+
         for (int i = 0; i < GRID_SIZE; i++) {
             obstacles.add(new PathFinder.Node(3, i));
             tiles[i][6].setFill(Color.BLACK);
         }
-        // Leave a gap in the wall
+
         tiles[6][3].setFill(Color.WHITE);
         obstacles.remove(new PathFinder.Node(3, 6));
 
-        // Define start (green) and end (red) points
         PathFinder.Node start = new PathFinder.Node(1, 1);
         PathFinder.Node goal = new PathFinder.Node(7, 5);
 
-        // Mark start and goal
         tiles[start.y][start.x].setFill(Color.GREEN);
         tiles[goal.y][goal.x].setFill(Color.RED);
 
-        // Find the path
         List<PathFinder.Node> path = pathFinder.findPath(start, goal, obstacles);
 
-        // Mark the path (blue)
         for (PathFinder.Node node : path) {
             if ((node.x != start.x || node.y != start.y) &&
                     (node.x != goal.x || node.y != goal.y)) {
@@ -67,14 +63,13 @@ public class PathingTest extends Application {
             }
         }
 
-        // Display the grid
+
         Scene scene = new Scene(grid, GRID_SIZE * TILE_SIZE, GRID_SIZE * TILE_SIZE);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("PathFinder Test");
         stage.show();
 
-        // Print the path coordinates
         System.out.println("Path found with " + path.size() + " steps:");
         for (PathFinder.Node node : path) {
             System.out.println("(" + node.x + ", " + node.y + ")");

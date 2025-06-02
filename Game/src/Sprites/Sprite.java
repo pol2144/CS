@@ -7,11 +7,11 @@ import java.util.Set;
 
 public class Sprite extends ImageView {
     private int number = 0;
-    private int y;
-    private int x;
-    private int hp;
-    private double width;
-    private double height;
+    int y;
+    int x;
+    int hp;
+    double width;
+    double height;
     private Type type;
     Player player = new Player(1,1,Type.BLUE);
     private List<PathFinder.Node> currentPath = new ArrayList<>();

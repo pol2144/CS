@@ -31,4 +31,5 @@ public class MultiAnimatedSprite extends Sprite {
         currentAnimationRow = row;
     }
 
+
 }
