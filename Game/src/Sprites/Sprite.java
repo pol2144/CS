@@ -26,8 +26,8 @@ public class Sprite extends ImageView {
     }
 
     public void moveTo(int targetX, int targetY, Set<PathFinder.Node> obstacles) {
-        PathFinder.Node start = pathfinder.new Node(this.x, this.y);
-        PathFinder.Node goal = pathfinder.new Node(targetX, targetY);
+        PathFinder.Node start = new PathFinder.Node(this.x, this.y);
+        PathFinder.Node goal = new PathFinder.Node(targetX, targetY);
         currentPath = pathfinder.findPath(start, goal, obstacles);
     }
 

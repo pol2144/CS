@@ -1,15 +1,11 @@
 package Map;
 
-import Sprites.Images;
-import Sprites.MultiAnimatedSprite;
-import Sprites.Sprite;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import Client.Settings;
-import sun.reflect.generics.tree.Tree;
 
 public class Test extends Application {
 

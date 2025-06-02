@@ -9,7 +9,7 @@ import javafx.util.Duration;
 
 
 public class MultiAnimatedSprite extends Sprite {
-    private int currentAnimationRow;
+    int currentAnimationRow;
     private int currentAnimationFrame;
 
     public MultiAnimatedSprite(int hp, int x, int y, int animationSpeed, Images imageFromEnum) {

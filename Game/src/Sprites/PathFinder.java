@@ -3,8 +3,8 @@ package Sprites;
 import java.util.*;
 
 public class PathFinder {
-    public class Node implements Comparable<Node> {
-        int x, y;
+    public static class Node implements Comparable<Node> {
+        public int x, y;
         double gCost, hCost;
         Node parent;
 
